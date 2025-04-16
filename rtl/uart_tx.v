@@ -27,19 +27,18 @@ module uart_tx #(
     input  wire        tx_valid_i   ,
     output reg         tx_ready_o
 );
-
 // input wire         cfg_en_i        , // cfg enable signal
 // input  wire [15:0] cfg_div_i       , // baudrate div value : f_clk / baudrate
 // input  wire        cfg_parity_en_i , // parity enable
 // input  wire [1:0]  cfg_parity_sel_i, // parity select : 00->even, 01->odd, 02:none, 11: reversed
 // input  wire [1:0]  cfg_bits_i      , // data bits length: 00->5, 01->6, 10->7, 11->8
 // input  wire        cfg_stop_bits_i , // stop bits length: 0->1bit, 1->2bits
-localparam [2:0] IDLE           = 0;
-localparam [2:0] START_BIT      = 1;
-localparam [2:0] DATA           = 2;
-localparam [2:0] PARITY         = 3;
-localparam [2:0] STOP_BIT_FIRST = 4;
-localparam [2:0] STOP_BIT_LAST  = 5;
+localparam [2:0] IDLE           = 3'd0;
+localparam [2:0] START_BIT      = 3'd1;
+localparam [2:0] DATA           = 3'd2;
+localparam [2:0] PARITY         = 3'd3;
+localparam [2:0] STOP_BIT_FIRST = 3'd4;
+localparam [2:0] STOP_BIT_LAST  = 3'd5;
 
 reg [2:0]  CS,NS;
    
